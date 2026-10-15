@@ -475,7 +475,12 @@ async def home():
         "message":"Async API"
     }
 
+# -----------------------------------------
 
+# AUTHENTICATION BASICS : JWT INTRO, 
+# TOKEN-BASED AUTH, LOGIN API
+
+# -----------------------------------------
 
 
 
