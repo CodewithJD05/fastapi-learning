@@ -8,7 +8,8 @@ app = FastAPI()
 load_dotenv()
 # ALLOWED ORIGINS(FRONT-END URL)
 origins = settings.origins
-
+    # SECRET_KEY=os.getenv("SECRET_KEY")
+    # DB_URL = os.getenv("DB_URL")
 app.add_middleware(
     CORSMiddleware,
     allow_origins = origins #ALLOWED FE
