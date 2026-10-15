@@ -1,3 +1,13 @@
+from fastapi import FastAPI, status, HTTPException, Request, Depends, Header
+from pydantic import BaseModel
+from fastapi.responses import JSONResponse
+import time
+import sqlite3
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import Session, sessionmaker, declarative_base, Session
+import asyncio
+app = FastAPI()
+
 # -----------------------------------------
 
 # CRUD WITH DB
