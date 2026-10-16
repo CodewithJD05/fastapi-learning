@@ -15,17 +15,24 @@ from bs4 import BeautifulSoup
 app = FastAPI()
 
 @app.get("/news")
-def get_news():
-    url = "https://indianexpress.com/"  # Replace with the actual news website URL
+def get_news(page: int = 1,limit: int = 10):
+    url = "https://news.ycombinator.com/"  # Replace with the actual news website URL
     response = requests.get(url)
 
     soup = BeautifulSoup(response.text, "html.parser")
 
     title = []
 
-    for item in soup.find_all("a", class_="article-click topblockNews__sidebarLink"):
+    for item in soup.find_all("span", class_="titleline"):
         title.append(item.text)
-
-    return {"news": title[:2]}
+#  PAGINATION LOGIC
+    start = (page-1)* limit
+    end = start+limit
+    return {
+        "page":page,
+        "limit":limit,
+        "total":len(title),
+        "data":title[start:end]
+    }
 
     
